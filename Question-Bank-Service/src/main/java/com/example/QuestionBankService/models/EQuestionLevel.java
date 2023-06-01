@@ -1,6 +1,6 @@
 package com.example.QuestionBankService.enums;
 
-public enum QuestionLevel {
+public enum EQuestionLevel {
     LOW,
     MEDIUM,
     HARD
