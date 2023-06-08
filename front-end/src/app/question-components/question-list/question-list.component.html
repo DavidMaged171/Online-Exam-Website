@@ -1,0 +1,51 @@
+<div class="container-xl">
+  <div class="table-responsive">
+    <div class="table-wrapper">
+      <div class="table-title">
+        <div class="row">
+          <div class="col-sm-6">
+            <h4><b>Manage Questions</b></h4>
+          </div>
+          <div class="col-sm-6">
+            <!-- <button class="btn btn-success" (click)="AddQuestion()">
+              <i class='fas fa-plus-circle'></i><span> ADD</span>
+            </button> -->
+          </div>
+        </div>
+      </div>
+      <table class="table table-striped table-hover table-bordered table-content">
+        <thead>
+          <tr class="center-align">
+            <th>Question Name</th>
+            <th>Question Category</th>
+            <th>Quesstion Level</th>
+            <th>Created By</th>
+            <th>Mark</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr  ngDefaultControl *ngFor="let question of questionList" class="center-align">
+            <td>{{ question.name }}</td>
+            <td>{{ question.category }}</td>
+            <td>{{ question.questionLevel }}</td>
+            <td>{{ question.createdBy }}</td>
+            <td>{{ question.mark }}</td>
+            <td>
+              <a href="#" [routerLink]="['/question/update', question.id]">
+                <button  class="btn btn-warning btn-sm" style="margin-left: 10px;">Update</button>
+              </a>
+                <button type="button" class="btn btn-info" style="margin-left: 25px;">View</button>
+              <a href="#" [routerLink]="['/editquestion/', question.id]">
+                <button class="btn btn-danger btn-sm" style="margin-left: 20px;">Delete</button>
+              </a>
+            </td>
+          </tr>
+          <tr>
+            <td *ngIf="questionList.length == 0" colspan="6">No Question Found</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

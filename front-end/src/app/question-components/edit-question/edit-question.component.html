@@ -1,0 +1,60 @@
+<form class="qForm" [formGroup]="editQuestionForm">
+  <div class="form-group">
+    <label >Question Name</label>
+    <input [(ngModel)]="question.name" type="text" formControlName="questionName" class="form-control"  aria-describedby="emailHelp" placeholder="Enter Question Name">
+    <div *ngIf="!editQuestionForm.controls.questionName.valid && editQuestionForm.controls.questionName.touched " >
+      <small *ngIf="!editQuestionForm.controls.questionName.errors.maxLength" class="text-danger" >Max Length 300 charcter</small><br>
+      <small *ngIf="!editQuestionForm.controls.questionName.errors.minLength" class="text-danger form-text" >Min Length 40 charcter</small><br>
+      <small *ngIf="editQuestionForm.controls.questionName.errors.required" class="text-danger">*Required</small>
+    </div>
+  </div>
+  <div class="form-group">
+    <label >Question Category</label>
+    <input [(ngModel)]="question.category" type="text" formControlName="questionCategory" class="form-control" placeholder="Enter Question Category">
+    <div *ngIf="!editQuestionForm.controls.questionCategory.valid && editQuestionForm.controls.questionCategory.touched" >
+      <small *ngIf="!editQuestionForm.controls.questionCategory.errors.maxLength" class="text-danger" >Max Length 300 charcter</small><br>
+      <small *ngIf="!editQuestionForm.controls.questionCategory.errors.minLength" class="text-danger form-text" >Min Length 40 charcter</small><br>
+      <small *ngIf="editQuestionForm.controls.questionCategory.errors.required" class="text-danger">*Required</small>
+    </div>
+  </div>
+  <div class="form-group" >
+    <label >Question Level</label>
+    <select [(ngModel)]="question.questionLevel" class="form-control form-control-lg">
+        <option *ngFor="let item of qLevel" [value]="item" >{{item}}</option>
+    </select>
+</div>
+  <div class="form-group">
+    <label >Question Mark</label>
+    <input [(ngModel)]="question.mark" type="number" formControlName="questionMark" class="form-control" placeholder="Enter Question Mark">
+    <div *ngIf="!editQuestionForm.controls.questionMark.valid && editQuestionForm.controls.questionMark.touched" >
+      <small *ngIf="editQuestionForm.controls.questionMark.errors.required" class="text-danger">*Required</small>
+      <small *ngIf="editQuestionForm.controls.questionMark.errors.pattern" class="text-danger">*Time must be > 0</small>
+    </div>
+  </div>
+  <div class="form-group">
+    <label >Question Time</label>
+    <input [(ngModel)]="question.time" type="number" formControlName="questionTime" class="form-control" placeholder="Enter Question Time">
+    <div *ngIf="!editQuestionForm.controls.questionTime.valid && editQuestionForm.controls.questionTime.touched" >
+      <small *ngIf="editQuestionForm.controls.questionTime.errors.required" class="text-danger">*Required</small>
+      <small *ngIf="editQuestionForm.controls.questionTime.errors.pattern" class="text-danger">*Time must be > 0</small>
+    </div>
+  </div>
+
+  <div class="attribute" style="margin: 10px; text-align: center;">
+    <label>Answer</label>
+    <div style="display: inline;padding-left: 10px;">
+    <input style="border-radius: 10px;" id="ansNameTag" type="text" #inputAns placeholder="Enter Answer"
+        size="50px">
+    </div>
+    <button type="button"
+     class="btn btn-primary" (click)="addAnswer(inputAns.value)" style="margin-left: 10px; ">Add Answer</button>
+  </div>
+
+  <div [(ngModel)]="question.answers" *ngFor="let ans of question.answers">
+    <app-answer [answer]="ans"></app-answer>
+  </div>
+
+  <div style="text-align: center; margin-top: 10px;">
+    <button type="submit" (click)="updateQuestion()" [disabled]="!editQuestionForm.valid" class="btn btn-primary" >Update</button>
+  </div>
+</form>

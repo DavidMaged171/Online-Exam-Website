@@ -1,0 +1,8 @@
+<div class="ans" ngDefaultControl [(ngModel)]="answer">
+    <input type="radio" name="correct_ans">
+    <label style="margin-right: 20px;">Mark as correct Answer</label>
+    <label style="margin-right: 10px;">Name</label>
+      <input readonly type="text" size="80px" [(ngModel)]="answer.name">
+    <button class="btn btn-danger btn-sm"  style="margin-left: 10px;">Delete</button>
+    <button  class="btn btn-warning btn-sm" style="margin-left: 10px;">Update</button>
+</div>
