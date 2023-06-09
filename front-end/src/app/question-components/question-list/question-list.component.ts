@@ -1,6 +1,8 @@
 import { QuestionController } from '../../../controllers/question.controller';
 import { Component, OnInit, Output } from '@angular/core';
 import { Question } from '../../../models/question.model';
+import { ActivatedRoute, Router } from '@angular/router';
+import { environment } from 'src/environments/environment.development';
 
 @Component({
   selector: 'app-question-list',
@@ -9,7 +11,7 @@ import { Question } from '../../../models/question.model';
 })
 export class QuestionListComponent implements OnInit {
   questionList: Question[] = [];
-  constructor(private _questionController:QuestionController)
+  constructor(private _questionController:QuestionController, private _activatedRoute:ActivatedRoute)
   { }
   ngOnInit()
   {
@@ -35,5 +37,20 @@ async getAllQuestions() {
           }
         }
       });
+  }
+  public deleteQuestion()
+  {
+    let question:Question=new Question();
+      this._activatedRoute.paramMap.subscribe(params=>{
+        question.id+=params.get("questionId");
+    });
+    let response= this._questionController.deleteQuestionById(question.id);
+    if(response==="Deleted Successfully")
+    {
+      let router:Router=new Router();
+      //router.parent.navigate(['/About']);
+
+      router.navigate([QuestionListComponent]);
+    }
   }
 }

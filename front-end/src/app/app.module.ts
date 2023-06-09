@@ -10,13 +10,15 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HeaderComponent } from './shared/header/header.component';
 import { Route, RouterModule } from '@angular/router';
 import { EditQuestionComponent } from './question-components/edit-question/edit-question.component';
+import { ViewQuestionComponent } from './question-components/view-question/view-question.component';
 
 const routs:Route[]=[
-  {path:"question/create/",component:AddQuestionComponent},
+  {path:"question/create",component:AddQuestionComponent},
   {path:"question/update/:questionId",component:EditQuestionComponent},
+  {path:"question/read/:questionId",component:ViewQuestionComponent},
+  {path:"question/delete/:questionId",component:QuestionListComponent},
   {path:'',component:QuestionListComponent}
 ]
-
 
 @NgModule({
   declarations: [
@@ -26,6 +28,7 @@ const routs:Route[]=[
     AnswerComponent,
     HeaderComponent,
     EditQuestionComponent,
+    ViewQuestionComponent,
   ],
   imports: [
     BrowserModule,

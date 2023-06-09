@@ -6,7 +6,7 @@ import { Question } from 'src/models/question.model';
 var apiUrl = environment.questionApiUrl;
 var httpLink = {
   getAllQuestions: apiUrl + "/question/all",
-  deleteQuestionById: apiUrl + "/question/delete/",
+  deleteQuestionById: apiUrl + "/question/delete",
   getQuestionDetailById: apiUrl + "/question/findById",
   saveQuestion: apiUrl + "/question/create",
   updateQuestion:apiUrl+"/question/update"
@@ -26,9 +26,9 @@ export class QuestionController
   public getAllQuestions(): Observable<any> {
     return this.questionService.get(httpLink.getAllQuestions);
   }
-  // public deleteQuestionById(model: any): Observable<any> {
-  //   return this.webApiService.post(httpLink.deleteQuestionById + '?QuestionId=' + model, "");
-  // }
+  public deleteQuestionById(id: any): any {
+    return this.questionService.delete(httpLink.deleteQuestionById + '/' + id);
+  }
   public getQuestionDetailById(model: any): Observable<any> {
     return this.questionService.get(httpLink.getQuestionDetailById + '/' + model);
   }

@@ -48,7 +48,8 @@ export class EditQuestionComponent implements OnInit{
     ans.name=name;
     this.question.answers.push(ans);
   }
-  getQuestionDetailById() {
+  getQuestionDetailById()
+  {
     this._questionController.getQuestionDetailById(this.question.id).subscribe((data: any) => {
       if (data != null && data.body != null) {
         var resultData = data.body;

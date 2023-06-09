@@ -61,6 +61,17 @@ export class QuestionService{
         catchError(this.handleError)
       );
   }
+  public delete(url:string){
+    const headers = new HttpHeaders().set('Content-Type', 'text/plain; charset=utf-8');
+    this._httpClient.delete(url,{ headers, responseType: 'text'})
+    .subscribe(response=>{
+      console.log(response);
+      return response;
+    },error=>{
+      console.log("Error .... : ",error);
+    },()=>{
+    });
+  }
   private ReturnResponseData(response: any) {
     return response;
   }

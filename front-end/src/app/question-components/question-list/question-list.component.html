@@ -7,9 +7,11 @@
             <h4><b>Manage Questions</b></h4>
           </div>
           <div class="col-sm-6">
-            <!-- <button class="btn btn-success" (click)="AddQuestion()">
-              <i class='fas fa-plus-circle'></i><span> ADD</span>
-            </button> -->
+            <a href="#" [routerLink]="['/question/create']">
+              <button class="btn btn-success" style="margin: 10px;">
+                <i class='fas fa-plus-circle'></i><span> ADD</span>
+              </button>
+            </a>
           </div>
         </div>
       </div>
@@ -35,9 +37,11 @@
               <a href="#" [routerLink]="['/question/update', question.id]">
                 <button  class="btn btn-warning btn-sm" style="margin-left: 10px;">Update</button>
               </a>
+              <a href="#" [routerLink]="['/question/read/', question.id]">
                 <button type="button" class="btn btn-info" style="margin-left: 25px;">View</button>
-              <a href="#" [routerLink]="['/editquestion/', question.id]">
-                <button class="btn btn-danger btn-sm" style="margin-left: 20px;">Delete</button>
+              </a>
+              <a href="#" [routerLink]="['/question/delete/', question.id]">
+                <button (click)="deleteQuestion()" class="btn btn-danger btn-sm" style="margin-left: 20px;">Delete</button>
               </a>
             </td>
           </tr>
@@ -49,3 +53,11 @@
     </div>
   </div>
 </div>
+
+
+<app-view-question></app-view-question>
+
+
+
+
+
