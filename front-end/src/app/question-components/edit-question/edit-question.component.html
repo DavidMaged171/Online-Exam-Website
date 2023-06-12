@@ -1,7 +1,7 @@
 <form class="qForm" [formGroup]="editQuestionForm">
   <div class="form-group">
     <label >Question Name</label>
-    <input [(ngModel)]="question.name" type="text" formControlName="questionName" class="form-control"  aria-describedby="emailHelp" placeholder="Enter Question Name">
+    <input [(ngModel)]="question.name" type="text" formControlName="questionName" class="form-control" placeholder="Enter Question Name">
     <div *ngIf="!editQuestionForm.controls.questionName.valid && editQuestionForm.controls.questionName.touched " >
       <small *ngIf="!editQuestionForm.controls.questionName.errors.maxLength" class="text-danger" >Max Length 300 charcter</small><br>
       <small *ngIf="!editQuestionForm.controls.questionName.errors.minLength" class="text-danger form-text" >Min Length 40 charcter</small><br>

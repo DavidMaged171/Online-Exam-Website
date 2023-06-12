@@ -16,7 +16,6 @@ export class QuestionListComponent implements OnInit {
   ngOnInit()
   {
     this.getAllQuestions();
-    console.log("questionList component")
   }
 
 async getAllQuestions() {

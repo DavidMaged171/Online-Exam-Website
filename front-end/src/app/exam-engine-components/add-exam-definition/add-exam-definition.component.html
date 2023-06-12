@@ -1,0 +1,63 @@
+<div class="container-xl">
+  <div class="table-responsive">
+    <div class="table-wrapper">
+      <div class="table-title">
+        <div class="row">
+          <form class="qForm" style="margin: 10px;" [formGroup]="addExamForm">
+            <div class="form-group">
+              <label >Exam Name</label>
+              <input [(ngModel)]="examDefinition.name" type="text" formControlName="examName" class="form-control" placeholder="Enter Exam Name">
+              <div *ngIf="!addExamForm.controls.examName.valid && addExamForm.controls.examName.touched " >
+                <small *ngIf="!addExamForm.controls.examName.errors.maxLength" class="text-danger" >Max Length 100 charcter</small><br>
+                <small *ngIf="!addExamForm.controls.examName.errors.minLength" class="text-danger form-text" >Min Length 5 charcter</small><br>
+                <small *ngIf="addExamForm.controls.examName.errors.required" class="text-danger">*Required</small>
+              </div>
+            </div>
+            <div class="form-group">
+              <label >Exam Passing Score</label>
+              <input [(ngModel)]="examDefinition.passingScore" type="number" formControlName="examPassingScore" class="form-control" placeholder="Enter Passing Score %">
+              <div *ngIf="!addExamForm.controls.examPassingScore.valid && addExamForm.controls.examPassingScore.touched" >
+                <small *ngIf="addExamForm.controls.examPassingScore.errors.required" class="text-danger">*Required</small>
+                <small *ngIf="addExamForm.controls.examPassingScore.errors.pattern" class="text-danger">*passing Score must be > 0</small>
+                <small *ngIf="addExamForm.controls.examPassingScore.errors.min" class="text-danger">*Passing Score must be > 50</small>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+      <table class="table table-striped table-hover table-bordered table-content">
+        <thead>
+          <tr class="center-align">
+            <th [width]="70">Questions</th>
+            <th [width]="25"></th>
+            <th [width]="5"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr  ngDefaultControl *ngFor="let question of questionList; let i=index" class="center-align">
+            <td [width]="75">
+              <h5 style="color: slateblue;">{{ question.name }}</h5>
+              <ol>
+                <li *ngFor="let ans of question.answers">{{ ans.name }}</li>
+              </ol>
+            </td>
+            <td style="text-align: center;vertical-align: middle;">
+              <h6>{{ question.category}}</h6>
+              <h6>{{ question.mark }} Marks</h6>
+              <h6>{{ question.time }} Minutes</h6>
+            </td>
+            <td style="text-align: center;vertical-align: middle;">
+              <input  type="checkbox" name="selectedQuestions" >
+              <label style="margin-left: 10px;">Add to Exam</label>
+            </td>
+          </tr>
+
+        </tbody>
+      </table>
+      <div style="text-align: center;">
+        <button (click)="addExamDefinition()"  [disabled]="!addExamForm.valid" type="button" class="btn btn-primary">Submit</button>
+      </div>
+    </div>
+  </div>
+</div>
+

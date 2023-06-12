@@ -35,13 +35,13 @@
             <td>{{ question.mark }}</td>
             <td>
               <a href="#" [routerLink]="['/question/update', question.id]">
-                <button  class="btn btn-warning btn-sm" style="margin-left: 10px;">Update</button>
+                <button  class="btn btn-warning btn-sm">Update</button>
               </a>
               <a href="#" [routerLink]="['/question/read/', question.id]">
-                <button type="button" class="btn btn-info" style="margin-left: 25px;">View</button>
+                <button type="button" class="btn btn-info" style="margin-left: 10px;">View</button>
               </a>
               <a href="#" [routerLink]="['/question/delete/', question.id]">
-                <button (click)="deleteQuestion()" class="btn btn-danger btn-sm" style="margin-left: 20px;">Delete</button>
+                <button (click)="deleteQuestion()" class="btn btn-danger btn-sm" style="margin-left: 10px;">Delete</button>
               </a>
             </td>
           </tr>

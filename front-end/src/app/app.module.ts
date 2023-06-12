@@ -13,6 +13,10 @@ import { EditQuestionComponent } from './question-components/edit-question/edit-
 import { ViewQuestionComponent } from './question-components/view-question/view-question.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
+import { AddExamDefinitionComponent } from './exam-engine-components/add-exam-definition/add-exam-definition.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ExamDefinitionListComponent } from './exam-engine-components/exam-definition-list/exam-definition-list.component';
+import { ViewExamDefinitionComponent } from './exam-engine-components/view-exam-definition/view-exam-definition.component';
 
 const routs:Route[]=[
   {path:"question/create",component:AddQuestionComponent},
@@ -20,6 +24,9 @@ const routs:Route[]=[
   {path:"question/read/:questionId",component:ViewQuestionComponent},
   {path:"question/delete/:questionId",component:QuestionListComponent},
   {path:'questionList',component:QuestionListComponent},
+  {path:"examDefinition/create",component:AddExamDefinitionComponent},
+  {path:"examDefinition/view/:examId",component:ViewExamDefinitionComponent},
+  {path:"examDefinition",component:ExamDefinitionListComponent},
   {path:'register',component:RegisterComponent},
   {path:'login',component:LoginComponent},
   {path:'',component:LoginComponent}
@@ -36,6 +43,9 @@ const routs:Route[]=[
     ViewQuestionComponent,
     LoginComponent,
     RegisterComponent,
+    AddExamDefinitionComponent,
+    ExamDefinitionListComponent,
+    ViewExamDefinitionComponent,
   ],
   imports: [
     BrowserModule,
@@ -43,7 +53,8 @@ const routs:Route[]=[
     RouterModule.forRoot(routs),
     FormsModule,
     HttpClientModule,
-    ReactiveFormsModule.withConfig({warnOnNgModelWithFormControl: 'never'})
+    ReactiveFormsModule.withConfig({warnOnNgModelWithFormControl: 'never'}),
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,0 +1,50 @@
+<div class="container-xl">
+  <div class="table-responsive">
+    <div class="table-wrapper">
+      <div class="table-title">
+        <div class="row">
+          <div class="col-sm-6">
+            <h4><b>Manage Exam Definitions</b></h4>
+          </div>
+          <div class="col-sm-6">
+            <a href="#" [routerLink]="['/examDefinition/create']">
+              <button class="btn btn-success" style="margin: 10px;">
+                <i class='fas fa-plus-circle'></i><span> ADD</span>
+              </button>
+            </a>
+          </div>
+        </div>
+      </div>
+      <table class="table table-striped table-hover table-bordered table-content">
+        <thead>
+          <tr class="center-align">
+            <th>Exam Name</th>
+            <th>Exam Passing Score</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr  ngDefaultControl *ngFor="let exam of examDefinitionList" class="center-align">
+            <td [width]="750">{{ exam.name }}</td>
+            <td>{{ exam.passingScore }} %</td>
+              <td>
+                <a href="#" [routerLink]="['/examDeinition/update', exam.id]">
+                  <button  class="btn btn-warning btn-sm">Make it Exam Instance</button>
+                </a>
+                <a href="#" [routerLink]="['view/', exam.id]">
+                  <button type="button" class="btn btn-info" style="margin-left: 10px;">View & Update</button>
+                </a>
+                <a href="#" [routerLink]="['/question/delete/', exam.id]">
+                  <button class="btn btn-danger btn-sm" style="margin-left: 10px;">Delete</button>
+                </a>
+              </td>
+          </tr>
+          <tr>
+            <td *ngIf="examDefinitionList.length == 0" colspan="6">No Exams Found</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
